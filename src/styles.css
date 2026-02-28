@@ -1,0 +1,27 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #16213e;
+  color: #e2e8f0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0d2846; }
+::-webkit-scrollbar-thumb { background: #2d5282; border-radius: 3px; }
+
+/* Smooth tap feedback for buttons */
+button:active { opacity: 0.8; }
+
+/* Prevent iOS callout on long press */
+img, button { -webkit-touch-callout: none; }

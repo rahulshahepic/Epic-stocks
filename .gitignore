@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Personal data — never commit
+data/*
+!data/.gitkeep
+
+# Test artifacts
+playwright-report/
+test-results/
+coverage/
+
+# Editor / OS
+.DS_Store
+*.local
+.vscode/
+.idea/
