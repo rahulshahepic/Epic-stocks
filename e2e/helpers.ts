@@ -47,6 +47,10 @@ export const FIXTURE_DATA: AppData = {
 
 /** Mock Google auth so the app considers the user signed in */
 export async function mockGoogleAuth(page: Page) {
+  // Block the real GIS script so it cannot load and overwrite our window.google
+  // stub — this matters on reload in CI where the network is available.
+  await page.route('**/accounts.google.com/gsi/client', (route) => route.abort())
+
   await page.addInitScript(() => {
     // Stub the GIS token client
     window.google = {
