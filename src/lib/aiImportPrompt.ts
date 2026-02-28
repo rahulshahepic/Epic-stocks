@@ -5,11 +5,9 @@
  * Safe to commit — contains only schema documentation, no personal data.
  */
 
-export const AI_IMPORT_PROMPT = `You are helping extract structured data from stock program documents.
+export const AI_IMPORT_PROMPT = `Output ONLY a single JSON object matching the schema below — no explanation, no markdown code fences, no prose.
 
-I will share documents related to my stock program (grants, loans, vesting schedules, etc.).
-Please read all documents carefully and output ONLY a single JSON object matching the schema below.
-Do not include any explanation, markdown code fences, or prose — just the raw JSON.
+Use whatever information you have been given about my stock program (grants, vesting schedules, loans, rate history, etc.) to populate the fields. Leave arrays empty if the information was not provided.
 
 SCHEMA:
 {
@@ -80,6 +78,6 @@ IMPORTANT NOTES:
 - If you are unsure about a value, use your best estimate and add a comment
   (as a separate "notes" field at the top level — the app will ignore unknown fields).
 
-Please extract all grants and loans from the documents I provide.`
+Populate as many fields as possible from the information provided.`
 
 export default AI_IMPORT_PROMPT
