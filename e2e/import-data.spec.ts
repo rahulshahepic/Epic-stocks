@@ -29,7 +29,9 @@ test.describe('Import data', () => {
     await textarea.fill(JSON.stringify(FIXTURE_DATA))
     await page.getByTestId('import-json-btn').click()
 
-    await expect(page.getByText('Data imported successfully!')).toBeVisible({ timeout: 10000 })
+    // After import the app transitions from empty state to the full dashboard —
+    // the nav bar appearing is the meaningful success signal.
+    await expect(page.getByTestId('nav-dashboard')).toBeVisible({ timeout: 10000 })
   })
 
   test('shows error on invalid JSON', async ({ page }) => {
