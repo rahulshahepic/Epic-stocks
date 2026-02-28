@@ -13,13 +13,16 @@ export default defineConfig({
     baseURL: 'http://localhost:4173/Epic-stocks/',
     trace: 'on-first-retry',
   },
-  projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-    { name: 'pixel5', use: { ...devices['Pixel 5'] } },
-    { name: 'iphone12', use: { ...devices['iPhone 12'] } },
-  ],
+  // Locally: Chromium only. In CI: add Firefox, WebKit, and mobile viewports.
+  projects: process.env['CI']
+    ? [
+        { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+        { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+        { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+        { name: 'pixel5', use: { ...devices['Pixel 5'] } },
+        { name: 'iphone12', use: { ...devices['iPhone 12'] } },
+      ]
+    : [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   // Start vite preview before running tests; killed automatically after
   webServer: {
     command: 'npm run preview',
